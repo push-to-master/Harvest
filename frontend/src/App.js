@@ -6,6 +6,7 @@ import AddReview from "./components/add-review";
 import Restaurant from "./components/restaurants";
 import RestaurantsList from "./components/restaurants-list";
 import Login from "./components/login";
+import MuiTable from "./components/mui-table";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -44,7 +45,7 @@ function App() {
           </li>
         </div>
       </nav>
-
+      <MuiTable/>
       <div className="container mt-3">
         <Switch>
           <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
