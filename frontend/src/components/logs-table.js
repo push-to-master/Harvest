@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 
 import { faker } from '@faker-js/faker';
 let LOGS = []
-for (let index = 0; index < 20; index++) {
+for (let index = 0; index < 50; index++) {
     LOGS[index] = {
         date: faker.date.past().toString(),
         name: faker.name.firstName(),
@@ -21,17 +21,17 @@ for (let index = 0; index < 20; index++) {
 }
 
 const columns = [
-  { id: 'date', label: 'Date', minWidth: 100 },
-  { id: 'name', label: 'Name', minWidth: 100 },
-  { id: 'veggie', label: 'Crop', minWidth: 170 },
+  { id: 'date', label: 'Date', minWidth: 50},
+  { id: 'name', label: 'Name', minWidth: 50 },
+  { id: 'veggie', label: 'Crop', minWidth: 50 },
   { id: 'net_harvest', label: 'Net Harvest (kg)', minWidth: 170 }
 ];
 
 
 
-export default function MuiTable() {
+export default function LogsTable() {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -44,8 +44,8 @@ export default function MuiTable() {
 
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+    <Paper sx={{ width: '90%', overflow: 'hidden' ,margin:'auto'}}>
+      <TableContainer sx={{ maxHeight: 700}}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -53,7 +53,7 @@ export default function MuiTable() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{ minWidth: column.minWidth}}
                 >
                   {column.label}
                 </TableCell>
@@ -64,12 +64,10 @@ export default function MuiTable() {
             {LOGS
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
-                console.log(row)
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.date}>
                     {columns.map((column) => {
                       const value = row[column.id];
-                      console.log(value)
                       return (
                         <TableCell key={column.id} size ='small'>
                           {value}

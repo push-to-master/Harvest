@@ -6,7 +6,7 @@ import AddReview from "./components/add-review";
 import Restaurant from "./components/restaurants";
 import RestaurantsList from "./components/restaurants-list";
 import Login from "./components/login";
-import MuiTable from "./components/mui-table";
+import LogsAddLog from "./components/logs-add-log";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/restaurants" className="navbar-brand">
+        <a href="/restaurants" className="navbar-brand mx-5">
           Harvest
         </a>
         <div className="navbar-nav mr-auto">
@@ -41,12 +41,15 @@ function App() {
               Login
             </Link>
             )}
-
+          </li>
+          <li className="nav-item">
+            <Link to={"/logs"} className="nav-link">
+              Logs
+            </Link>
           </li>
         </div>
       </nav>
-      <MuiTable/>
-      <div className="container mt-3">
+      <div className="mt-3 mx-3">
         <Switch>
           <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
           <Route 
@@ -65,6 +68,12 @@ function App() {
             path="/login"
             render={(props) => (
               <Login {...props} login={login} />
+            )}
+          />
+          <Route 
+            path="/logs"
+            render={(props) => (
+              <LogsAddLog {...props} user={user} />
             )}
           />
         </Switch>
