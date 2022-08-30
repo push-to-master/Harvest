@@ -15,17 +15,18 @@ export default class LogsDAO {
     }
   }
 
-  static async addLog(userInfo, produceName, type, totYield, numPlants, date) {
+  static async addLog(userInfo, produce, type, totYield, numPlants, date, description) {
     try {
       const reviewDoc = { 
         user_name: userInfo.name,
         user_id: ObjectId(userInfo._id),
         org_id: ObjectId(userInfo.org_id),
-        produce_name: produceName,
+        produce: produce,
         type: type,
         yield: totYield,
         num_plants: numPlants,
-        date: date
+        date: date,
+        description: description
       }
 
       return await logs.insertOne(reviewDoc)
