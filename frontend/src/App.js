@@ -8,6 +8,7 @@ import RestaurantsList from "./components/restaurants-list";
 import Login from "./components/login";
 import LogsAddLog from "./components/logs-add-log";
 import OrgsList from "./components/orgs-list";
+import ShowGraphs from "./components/show-graph";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -53,6 +54,11 @@ function App() {
               Organisations
             </Link>
           </li>
+        <li className="nav-item">
+            <Link to={"/show-graph"} className="nav-link">
+              Graphs
+            </Link>
+          </li>
         </div>
       </nav>
       <div className="mt-3 mx-3">
@@ -88,6 +94,13 @@ function App() {
               <OrgsList {...props} user={user} />
             )}
           />
+          <Route 
+            path="/show-graph"
+            render={(props) => (
+              <ShowGraphs {...props} user={user} />
+            )}
+          />
+
         </Switch>
       </div>
     </div>
