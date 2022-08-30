@@ -4,7 +4,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import MenuItem from '@mui/material/MenuItem';
 
 import LogsTable from './logs-table';
-
 const crops = [
   {
     name: 'None'
@@ -30,6 +29,7 @@ const dateString = () => {
 }
 
 const LogsAddLog = props => {
+  const [currentOrg, setCurrentOrg] = useState(props.org)
   const [selectedCrop, setCrop] = useState(["None"])
 
   const handleChange = (event) => {

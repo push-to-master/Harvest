@@ -7,6 +7,7 @@ import Restaurant from "./components/restaurants";
 import RestaurantsList from "./components/restaurants-list";
 import Login from "./components/login";
 import LogsAddLog from "./components/logs-add-log";
+import OrgsList from "./components/orgs-list";
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -47,6 +48,11 @@ function App() {
               Logs
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to={"/organisations"} className="nav-link">
+              Organisations
+            </Link>
+          </li>
         </div>
       </nav>
       <div className="mt-3 mx-3">
@@ -74,6 +80,12 @@ function App() {
             path="/logs"
             render={(props) => (
               <LogsAddLog {...props} user={user} />
+            )}
+          />
+          <Route 
+            path="/organisations"
+            render={(props) => (
+              <OrgsList {...props} user={user} />
             )}
           />
         </Switch>
