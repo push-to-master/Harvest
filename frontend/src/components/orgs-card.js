@@ -6,10 +6,10 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
-// import ListIcon from "@mui/icons-material/List";
-// import EqualizerIcon from "@mui/icons-material/Equalizer";
-// import PersonIcon from "@mui/icons-material/Person";
-// import GroupsIcon from "@mui/icons-material/Groups";
+import ListIcon from "@mui/icons-material/List";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import PersonIcon from "@mui/icons-material/Person";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 const OrgsCard = props => {
   const [orgName, setOrgName] = useState(props.name);
@@ -24,7 +24,7 @@ const OrgsCard = props => {
         sx={{ backgroundColor: isPersonal ? "green" : "blue" }}
       />
       <CardContent>
-        {/* {isPersonal ? <PersonIcon /> : <GroupsIcon />} */}
+        {isPersonal ? <PersonIcon /> : <GroupsIcon />}
         <Typography gutterBottom variant="h5" component="div" maxHeight={100}>
           {orgName}
         </Typography>
@@ -44,14 +44,14 @@ const OrgsCard = props => {
               color: "black"
             }
           }}
-        //   endIcon={<ListIcon />}
+        endIcon={<ListIcon />}
         >
           Logs
         </Button>
         </Link>
-        <Link to={"/charts"} style={{ textDecoration: 'none' }}>
+        <Link to={"/show-graph"} style={{ textDecoration: 'none' }}>
         <Button variant="contained" color="primary"
-        // endIcon={<EqualizerIcon />}
+        endIcon={<EqualizerIcon />}
         >
           View analytics
         </Button>
