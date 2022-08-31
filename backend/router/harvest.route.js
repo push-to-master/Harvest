@@ -17,6 +17,7 @@ router
 
 router
     .route("/logs")
+    .get(LogsCtrl.apiGetLogs)
     .post(LogsCtrl.apiPostLog)
 
 export default router
