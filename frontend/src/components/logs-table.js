@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import HarvestDataService from "../services/harvest.js";
 
 import { faker } from '@faker-js/faker';
 let LOGS = []
@@ -19,6 +20,19 @@ for (let index = 0; index < 50; index++) {
     }
 
 }
+
+const retrieveLogs = () => {
+  let pageNum = 0;
+  HarvestDataService.getAllLogs(pageNum)
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+};
+
+retrieveLogs();
 
 const columns = [
   { id: 'date', label: 'Date', minWidth: 50},
