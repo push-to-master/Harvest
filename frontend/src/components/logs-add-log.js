@@ -21,7 +21,6 @@ const crops = [
 
 const dateString = () => {
   const date = new Date();
-
   let day = date.getDate();
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
@@ -29,6 +28,7 @@ const dateString = () => {
 }
 
 const LogsAddLog = props => {
+  const [currentUser,setCurrentUser] = useState(props.user)
   const [currentOrg, setCurrentOrg] = useState(props.org)
   const [selectedCrop, setCrop] = useState(["None"])
 
