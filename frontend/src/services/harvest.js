@@ -32,6 +32,9 @@ class HarvestDataService {
   getAllLogs(page = 0){
     return http.get(`/logs?page=${page}`)
   }
+  addLog(data){
+    return http.post("/logs",data);
+  }
 }
 
 export default new HarvestDataService();

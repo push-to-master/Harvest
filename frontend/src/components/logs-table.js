@@ -9,43 +9,35 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import HarvestDataService from "../services/harvest.js";
 
-import { faker } from '@faker-js/faker';
-let LOGS = []
-for (let index = 0; index < 50; index++) {
-    LOGS[index] = {
-        date: faker.date.past().toString(),
-        name: faker.name.firstName(),
-        veggie: faker.lorem.sentence(1),
-        net_harvest: faker.finance.amount()
-    }
-
-}
-
-const retrieveLogs = () => {
-  let pageNum = 0;
-  HarvestDataService.getAllLogs(pageNum)
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(e => {
-      console.log(e);
-    });
-};
-
-retrieveLogs();
-
 const columns = [
-  { id: 'date', label: 'Date', minWidth: 50},
-  { id: 'name', label: 'Name', minWidth: 50 },
-  { id: 'veggie', label: 'Crop', minWidth: 50 },
-  { id: 'net_harvest', label: 'Net Harvest (kg)', minWidth: 170 }
+  { id: 'date', label: 'Date', minWidth: 50 },
+  { id: 'user_name', label: 'Farmer', minWidth: 50 },
+  { id: 'type', label: 'Crop Type', minWidth: 50 },
+  { id: 'produce', label: 'Produce Type', minWidth: 50 },
+  { id: 'description', label: 'Log Description', minWidth: 50 },
+  { id: 'yield', label: 'Yield (kg)', minWidth: 170, align: 'right' }
 ];
 
 
-
-export default function LogsTable() {
+const LogsTable = props => {
+  const [logs, setLogs] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
+
+  React.useEffect(() => {
+    retrieveLogs();
+  }, [])
+  const retrieveLogs = () => {
+    let pageNum = 0;
+    HarvestDataService.getAllLogs(pageNum)
+      .then(response => {
+        console.log(response.data.logs);
+        setLogs(response.data.logs);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -58,8 +50,8 @@ export default function LogsTable() {
 
 
   return (
-    <Paper sx={{ width: '90%', overflow: 'hidden' ,margin:'auto'}}>
-      <TableContainer sx={{ maxHeight: 700}}>
+    <Paper sx={{ width: '90%', overflow: 'hidden', margin: 'auto' }}>
+      <TableContainer sx={{ maxHeight: 700 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -67,7 +59,7 @@ export default function LogsTable() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth}}
+                  style={{ minWidth: column.minWidth }}
                 >
                   {column.label}
                 </TableCell>
@@ -75,16 +67,16 @@ export default function LogsTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {LOGS
+            {logs
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.date}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} size ='small'>
-                          {value}
+                        <TableCell key={column.id} size='small' align={column.align}>
+                          {column.id === "date" ? (new Date(value)).toLocaleDateString('en-GB') : value}
                         </TableCell>
                       );
                     })}
@@ -97,7 +89,7 @@ export default function LogsTable() {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={LOGS.length}
+        count={logs.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
@@ -106,3 +98,5 @@ export default function LogsTable() {
     </Paper>
   );
 }
+  ;
+export default LogsTable;
