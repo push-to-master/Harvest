@@ -15,6 +15,7 @@ const columns = [
   { id: 'type', label: 'Crop Type', minWidth: 50 },
   { id: 'produce', label: 'Produce Type', minWidth: 50 },
   { id: 'description', label: 'Log Description', minWidth: 50 },
+  { id: 'num_plants', label: 'No. of Plants', minWidth: 50},
   { id: 'yield', label: 'Yield (kg)', minWidth: 170, align: 'right' }
 ];
 
