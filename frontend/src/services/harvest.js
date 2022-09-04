@@ -32,7 +32,7 @@ class HarvestDataService {
   getAllLogs(page = 0){
     return http.get(`/logs?page=${page}`)
   }
-  addLog(data){
+  createLog(data){
     return http.post("/logs",data);
   }
 }
