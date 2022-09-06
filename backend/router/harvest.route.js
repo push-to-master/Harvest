@@ -3,6 +3,7 @@ import RestaurantCtrl from "../controller/restaurants.controller.js"
 import ReviewsCtrl from "../controller/reviews.controller.js"
 import LogsCtrl from "../controller/logs.controller.js"
 import LoginCtrl from "../controller/login.controller.js"
+import OrgsCtrl from "../controller/orgs.controller.js"
 
 const router = express.Router()
 
@@ -25,5 +26,10 @@ router
     .route("/login")
     .get(LoginCtrl.apiGetUser)
     .post(LoginCtrl.apiPostUser)
+
+router
+    .route("/orgs")
+    .get(OrgsCtrl.apiGetOrgs)
+    .post(OrgsCtrl.apiPostOrg)
 
 export default router
