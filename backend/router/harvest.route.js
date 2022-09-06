@@ -24,5 +24,6 @@ router
 router
     .route("/login")
     .get(LoginCtrl.apiGetUser)
+    .post(LoginCtrl.apiPostUser)
 
 export default router

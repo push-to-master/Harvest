@@ -38,4 +38,18 @@ export default class LoginDAO {
       return { user_details: {} }
     }
   }
+
+  static async createUser(userInfo) {
+    try {
+      const reviewDoc = { 
+        user_name: userInfo.name,
+        password: userInfo.password
+      }
+
+      return await user.insertOne(reviewDoc)
+    } catch (e) {
+      console.error(`Unable to create user: ${e}`)
+      return { error: e }
+    }
+  }
 }
