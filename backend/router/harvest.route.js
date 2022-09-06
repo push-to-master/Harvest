@@ -2,6 +2,7 @@ import express from "express"
 import RestaurantCtrl from "../controller/restaurants.controller.js"
 import ReviewsCtrl from "../controller/reviews.controller.js"
 import LogsCtrl from "../controller/logs.controller.js"
+import LoginCtrl from "../controller/login.controller.js"
 
 const router = express.Router()
 
@@ -19,5 +20,9 @@ router
     .route("/logs")
     .get(LogsCtrl.apiGetLogs)
     .post(LogsCtrl.apiPostLog)
+
+router
+    .route("/login")
+    .get(LoginCtrl.apiGetUser)
 
 export default router
