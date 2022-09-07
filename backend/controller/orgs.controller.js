@@ -37,7 +37,7 @@ export default class OrgsController {
     })
 
     let response = {
-      logs: orgsList,
+      orgs: orgsList,
       page: page,
       filters: filters,
       entries_per_page: orgsPerPage,

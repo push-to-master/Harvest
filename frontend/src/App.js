@@ -28,11 +28,11 @@ function App() {
           Harvest
         </a>
         <div className="navbar-nav mr-auto">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to={"/restaurants"} className="nav-link">
               Restaurants
             </Link>
-          </li>
+          </li> */}
           <li className="nav-item" >
             { user ? (
               <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>

@@ -1,7 +1,7 @@
-import React/*, { useState, useEffect }*/ from "react";
-import { Link } from "react-router-dom";
+import React, { useState }/*, { useState, useEffect }*/ from "react";
 import OrgsCard from "./orgs-card";
 import Grid from '@mui/material/Grid';
+import HarvestDataService from "../services/harvest.js";
 
 import { faker } from '@faker-js/faker';
 let ORGS = []
@@ -17,13 +17,29 @@ for (let index = 0; index < 20; index++) {
 
 
 const OrgsList = props => {
+    const [orgs,setOrgs] = useState([]);
+
+    React.useEffect(() => {
+        retrieveLogs();
+      }, [])
+    const retrieveLogs = () => {
+        HarvestDataService.getOrgs()
+          .then(response => {
+            console.log(response.data.orgs);
+            setOrgs(response.data.orgs);
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      };
+
     return (
         <div className="h-100 d-flex align-items-center justify-content-center">
             <Grid container spacing ={2}>
-                {ORGS.map((org) =>{
+                {orgs.map((org) =>{
                     return(
                     <Grid item key={org.id}>
-                        <OrgsCard name={org.name} desc = {org.desc} personal ={org.personal}/>
+                        <OrgsCard name={org.name} desc = {org.description} personal ={org.is_personal}/>
                     </Grid>
                     )
                 })}

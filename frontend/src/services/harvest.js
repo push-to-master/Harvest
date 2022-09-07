@@ -35,6 +35,11 @@ class HarvestDataService {
   createLog(data){
     return http.post("/logs",data);
   }
+
+  getOrgs(data){
+    return http.get("/orgs");
+  }
+
 }
 
 export default new HarvestDataService();
