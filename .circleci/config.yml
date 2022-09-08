@@ -37,6 +37,6 @@ workflow:
   build-test:
     jobs:
       - build
-      - buildfrontend
+      - buildfrontend:
         requires:
           -build
