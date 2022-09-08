@@ -37,3 +37,4 @@ workflow:
   build-test:
     jobs:
       - build
+      - buildfrontend
