@@ -13,7 +13,7 @@ jobs:
           command: cd backend/ && npm install && npm test
       - run:
           name: Test frontend
-          command: cd fronted/ && npm install && npm test
+          command: cd frontend/ && npm install && npm test
       - codecov/upload
 
 workflow:
