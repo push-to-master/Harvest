@@ -17,6 +17,20 @@ jobs:
           name: Run tests and collect coverage
           command: npm test
       - codecov/upload
+  build:
+    docker:
+      - image: cimg/node:current
+    working_directory: ~/project/frontend
+    steps:
+      - checkout:
+          path: ~/project
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run tests and collect coverage
+          command: npm test
+      - codecov/upload
 
 workflow:
   version: 2.1
