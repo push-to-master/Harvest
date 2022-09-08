@@ -38,3 +38,5 @@ workflow:
     jobs:
       - build
       - buildfrontend
+        requires:
+          -build
