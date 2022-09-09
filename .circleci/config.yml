@@ -6,16 +6,14 @@ jobs:
   build:
     docker:
       - image: cimg/node:current
-    working_directory: ~/project/backend
     steps:
-      - checkout:
-          path: ~/project
+      - checkout
       - run:
-          name: Install dependencies
-          command: npm install
+          name: Test backend
+          command: cd backend/ && npm install && npm test
       - run:
-          name: Run tests and collect coverage
-          command: npm test
+          name: Test frontend
+          command: cd frontend/ && npm install && npm test
       - codecov/upload
 
 workflow:
