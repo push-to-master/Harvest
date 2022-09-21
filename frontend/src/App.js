@@ -8,7 +8,7 @@ import RestaurantsList from "./components/restaurants-list";
 import Login from "./components/login";
 import LogsAddLog from "./components/logs-add-log";
 import OrgsList from "./components/orgs-list";
-import ShowGraphs from "./components/show-graph";
+import ShowGraphs from "./components/graphs-list";
 
 function App() {
   const [user, setUser] = React.useState(null);
