@@ -15,7 +15,7 @@ const columns = [
   { id: 'type', label: 'Crop Type', minWidth: 50 },
   { id: 'produce', label: 'Produce Type', minWidth: 50 },
   { id: 'description', label: 'Log Description', minWidth: 50 },
-  { id: 'num_plants', label: 'No. of Plants', minWidth: 50},
+  { id: 'num_plants', label: 'No. of Plants', minWidth: 50 },
   { id: 'yield', label: 'Yield (kg)', minWidth: 170, align: 'right' }
 ];
 
@@ -24,7 +24,9 @@ const LogsTable = props => {
   const [logs, setLogs] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  
 
+  //API request to get log data and store it in the "logs" react state
   React.useEffect(() => {
     retrieveLogs();
   }, [])
@@ -40,16 +42,19 @@ const LogsTable = props => {
       });
   };
 
+  const compareDate = (a,b) => a["date"]<b["date"]?1:-1;
+  const sortedData = [...logs].sort(compareDate)
+  //event handler to change pages in table
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
+  //event handler to change the amount of logs displayed per page in the table
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
-
+  //JSX to display the table with styling
   return (
     <Paper sx={{ width: '90%', overflow: 'hidden', margin: 'auto' }}>
       <TableContainer sx={{ maxHeight: 700 }}>
@@ -68,7 +73,7 @@ const LogsTable = props => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {logs
+            {sortedData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (

@@ -4,16 +4,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import AddReview from "./components/add-review";
 import Restaurant from "./components/restaurants";
-import RestaurantsList from "./components/restaurants-list";
-import Login from "./components/login";
+// import Login from "./components/login";
 import LogsAddLog from "./components/logs-add-log";
 import OrgsList from "./components/orgs-list";
-import ShowGraphs from "./components/show-graph";
+import ShowGraphs from "./components/graphs-list";
+import UserLogin from "./components/user-login";
 
 function App() {
   const [user, setUser] = React.useState(null);
 
   async function login(user = null) {
+    console.log(user);
     setUser(user);
   }
 
@@ -24,9 +25,11 @@ function App() {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/" className="navbar-brand mx-5">
-          Harvest
-        </a>
+        <div className="navbar-brand mx-5">
+          <Link to={"/"} className="nav-link">
+              Organisations
+          </Link>
+        </div>
         <div className="navbar-nav mr-auto">
           {/* <li className="nav-item">
             <Link to={"/restaurants"} className="nav-link">
@@ -36,7 +39,7 @@ function App() {
           <li className="nav-item" >
             { user ? (
               <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
-                Logout {user.name}
+                Logout {user.username}
               </a>
             ) : (            
             <Link to={"/login"} className="nav-link">
@@ -65,7 +68,9 @@ function App() {
         <Switch>
           <Route 
             exact path={["/", "/organisations"]} 
-            component={OrgsList} 
+            render={(props) => (
+              <OrgsList {...props} user={user} />
+            )}
           />
           <Route 
             path="/restaurants/:id/review"
@@ -82,7 +87,7 @@ function App() {
           <Route 
             path="/login"
             render={(props) => (
-              <Login {...props} login={login} />
+              <UserLogin {...props} login={login} />
             )}
           />
           <Route 

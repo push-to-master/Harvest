@@ -12,6 +12,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import GroupsIcon from "@mui/icons-material/Groups";
 
 const OrgsCard = props => {
+  //Retrieve information to display on card from props object
   const [orgName, setOrgName] = useState(props.name);
   const [orgDescription, setDescription] = useState(props.desc);
   const [isPersonal, setPersonal] = useState(props.personal);
