@@ -35,6 +35,7 @@ const produce = [
   }
 ]
 
+//Function to convert an objects date object into a string literal for neat display (args: dateObject returns: string)
 const dateString = (dateObject) => {
   const date = dateObject;
   let day = date.getDate();
@@ -43,6 +44,7 @@ const dateString = (dateObject) => {
   return year + "-" + (((month + "").length === 1) ? "0" + month : month) + "-" + (((day + "").length === 1) ? "0" + day : day)
 }
 
+//React component to take user input through various forms and dropdowns, and send an API request to server to add a new log
 const LogsAddLog = props => {
   const [currentUser] = useState(props.user)
   const [currentOrg, setCurrentOrg] = useState(props.org)
@@ -54,7 +56,8 @@ const LogsAddLog = props => {
   const [selectedDate, setDate] = useState(dateString(new Date()))
   const [logsUploaded,setLogsUploaded] = useState(0);
 
-  const validForm = () =>{
+  //Function returns true if the user has not selected a value for all fields or has not logged in
+  const invalidForm = () =>{
     return (
       (selectedCropType ==="None" ||
       selectedCropProduce==="None"||
@@ -64,6 +67,8 @@ const LogsAddLog = props => {
       cropYield <=0)
     )
   }
+
+  //API request to add a log to the database
   const uploadLog =() =>{
     var data = {
       user_name: currentUser.name,
@@ -174,7 +179,7 @@ const LogsAddLog = props => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Button variant="contained" disabled={validForm()} onClick={()=>{uploadLog()}}>
+          <Button variant="contained" disabled={invalidForm()} onClick={()=>{uploadLog()}}>
             Submit Harvest
           </Button>
 

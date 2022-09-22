@@ -15,6 +15,7 @@ const Login = props => {
   };
 
   const login = () => {
+    console.log(user);
     props.login(user)
     props.history.push('/');
   }

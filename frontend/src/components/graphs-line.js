@@ -1,66 +1,71 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CanvasJSReact from './canvasjs.react';
-var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-class LineGraph extends Component {
-	render() {
-		const options = {
-			animationEnabled: true,
-			exportEnabled: true,
-			theme: "light2", // "light1", "dark1", "dark2"
-			title: {
-				text: "Total Harvest by Week"
-			},
-			width: 1000,
-			height: 600,
-			axisY: {
-				title: "Bounce Rate",
-				suffix: "%"
-			},
-			axisX: {
-				title: "Week of Year",
-				prefix: "W",
-				interval: 2
-			},
-			data: [{
-				type: "line",
-				toolTipContent: "Week {x}: {y}%",
-				dataPoints: [
-					{ x: 1, y: 64 },
-					{ x: 2, y: 61 },
-					{ x: 3, y: 64 },
-					{ x: 4, y: 62 },
-					{ x: 5, y: 64 },
-					{ x: 6, y: 60 },
-					{ x: 7, y: 58 },
-					{ x: 8, y: 59 },
-					{ x: 9, y: 53 },
-					{ x: 10, y: 54 },
-					{ x: 11, y: 61 },
-					{ x: 12, y: 60 },
-					{ x: 13, y: 55 },
-					{ x: 14, y: 60 },
-					{ x: 15, y: 56 },
-					{ x: 16, y: 60 },
-					{ x: 17, y: 59.5 },
-					{ x: 18, y: 63 },
-					{ x: 19, y: 58 },
-					{ x: 20, y: 54 },
-					{ x: 21, y: 59 },
-					{ x: 22, y: 64 },
-					{ x: 23, y: 59 }
-				]
-			}]
+const LineGraph = (props) => {
+	const [graphData, setGraphData] = React.useState([])
+
+	React.useEffect(() => {
+		const prepareGraph = () => {
+			const rawData = props.logsData;
+			let newArray = rawData.filter((elem)=>(elem.type === props.type));
+			newArray = newArray.map(({ _id, description, num_plants, org_id, produce, type, user_id, user_name, ...item }) => item);
+			const maxYield = Math.max(...newArray.map(o => o.yield))
+			newArray = newArray.map(elem => (
+				{
+					x: parseInt(elem.date.slice(8, 10)), 
+					y: (elem.yield/maxYield)*100,
+					date:elem.date.slice(0,10)
+				}
+			));
+			const processData = (data) => {
+				return (Object.values(data.reduce((obj, item) => {
+					var key = item.x
+					if (!obj[key]) {
+						obj[key] = Object.assign(item)
+					} else {
+						obj[key].y += item.y
+					}
+					return obj
+				}, {})))
+			};
+			newArray = processData(newArray);
+			console.log(newArray);
+			setGraphData(newArray)
 		}
-		return (
-			<div>
-				<CanvasJSChart options={options}
-				/* onRef={ref => this.chart = ref} */
-				/>
-				{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-			</div>
-		);
+		prepareGraph();
+	}, [props.logsData, props.type])
+
+	const options = {
+		animationEnabled: true,
+		exportEnabled: true,
+		theme: "light2", // "light1", "dark1", "dark2"
+		title: {
+			text: "Total Harvest by Last 30 Days"
+		},
+		width: 1000,
+		height: 600,
+		axisY: {
+			title: props.type+" Harvest Trend",
+			suffix: "%"
+		},
+		axisX: {
+			title: "Day"
+		},
+		data: [{
+			type: "line",
+			toolTipContent: "Day {x}: {y}%",
+			dataPoints: graphData
+		}]
 	}
+	return (
+		<div>
+			<CanvasJSChart options={options}
+			/* onRef={ref => this.chart = ref} */
+			/>
+			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+		</div>
+	);
 }
+
 export default LineGraph;                     
