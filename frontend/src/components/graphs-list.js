@@ -7,9 +7,9 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 
 
-import BarGraph from './graphs-bar';
-import PieChart from './graphs-pie';
-import LineGraph from './graphs-line';
+import BarGraph from './graph-bar';
+import PieChart from './graph-pie';
+import LineGraph from './graph-line';
 
 import HarvestDataService from "../services/harvest.js";
 
@@ -28,7 +28,7 @@ function TabPanel(props) {
                 aria-labelledby={`vertical-tab-${index}`}
                 {...other}
             >
-                <Box sx={{ p: 10 }}>
+                <Box sx={{ pl: 10 }}>
                     <BarGraph logsData={logsData} />
                 </Box>
 
@@ -79,8 +79,8 @@ function TabPanel(props) {
                 aria-labelledby={`vertical-tab-${index}`}
                 {...other}
             >
-                <Box sx={{ p: 10 }}>
-                    <PieChart />
+                <Box sx={{ pl: 10 }}>
+                    <PieChart logsData = {logsData} type = {lineGraphType}/>
                 </Box>
 
             </div>
