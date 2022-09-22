@@ -17,19 +17,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function UserLogin(props) {
-  const initialUserState = {
-    username: "",
-    password: "",
-  };
-
-  const [user, setUser] = React.useState(initialUserState);
-
-  const login = () => {
+  const login = (user) => {
     props.login(user)
     props.history.push('/');
   }
 
-//doesnt work
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -37,11 +29,7 @@ export default function UserLogin(props) {
       username:data.get('username'),
       password:data.get('password')
     }
-    setUser(user1.data)
-    login(user1.data);
-    console.log({
-      user1
-    });
+    login(user1)
   };
 
   return (

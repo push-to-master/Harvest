@@ -26,7 +26,7 @@ function App() {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="navbar-brand mx-5">
-          <Link to={"/organisations"} className="nav-link">
+          <Link to={"/"} className="nav-link">
               Organisations
           </Link>
         </div>
