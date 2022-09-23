@@ -15,7 +15,7 @@ jobs:
           name: Test frontend
           command: cd frontend/ && npm install && npm test
       - codecov/upload:
-        file: './frontend/coverage/clover.xml'
+        file: Harvest/frontend/coverage/clover.xml
         token: fb60fdd3-c6e6-41a9-881e-292aac0418ba
 
 workflow:
