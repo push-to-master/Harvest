@@ -15,7 +15,7 @@ jobs:
           name: Test frontend
           command: cd frontend/ && npm install && npm test
       - codecov/upload:
-          file: \Harvest\frontend\coverage\clover.xml
+          file: \Harvest\frontend\package.json
 
 workflow:
   version: 2.1
