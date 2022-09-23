@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <coverage generated="1663932904517" clover="3.2.0">
   <project timestamp="1663932904518" name="All files">
     <metrics statements="91" coveredstatements="57" conditionals="20" coveredconditionals="6" methods="37" coveredmethods="14" elements="148" coveredelements="77" complexity="0" loc="91" ncloc="91" packages="1" files="6" classes="6"/>
@@ -110,6 +111,18 @@
       <line num="28" count="0" type="stmt"/>
       <line num="32" count="0" type="stmt"/>
       <line num="35" count="0" type="stmt"/>
+=======
+<coverage generated="1663933305844" clover="3.2.0">
+  <project timestamp="1663933305844" name="All files">
+    <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1" elements="7" coveredelements="4" complexity="0" loc="5" ncloc="5" packages="1" files="1" classes="1"/>
+    <file name="user-login.js" path="/home/gao/Desktop/workspace/Harvest/frontend/src/components/user-login.js">
+      <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="21" count="4" type="stmt"/>
+      <line num="22" count="0" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
+      <line num="37" count="4" type="stmt"/>
+>>>>>>> 3824dad (login test)
     </file>
   </project>
 </coverage>

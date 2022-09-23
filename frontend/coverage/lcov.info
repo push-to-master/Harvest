@@ -1,4 +1,5 @@
 TN:
+<<<<<<< HEAD
 SF:src\components\graphs-list.js
 FN:24,ShowGraphs
 FNF:1
@@ -214,26 +215,22 @@ BRH:0
 end_of_record
 TN:
 SF:src\components\user-login.js
+=======
+SF:src/components/user-login.js
+>>>>>>> 3824dad (login test)
 FN:19,UserLogin
-FN:20,(anonymous_1)
-FN:25,(anonymous_2)
-FNF:3
-FNH:0
-FNDA:0,UserLogin
+FN:21,(anonymous_1)
+FNF:2
+FNH:1
+FNDA:4,UserLogin
 FNDA:0,(anonymous_1)
-FNDA:0,(anonymous_2)
-DA:17,1
-DA:20,0
-DA:21,0
+DA:17,2
+DA:21,4
 DA:22,0
-DA:25,0
-DA:26,0
-DA:27,0
-DA:28,0
-DA:32,0
-DA:35,0
-LF:10
-LH:1
+DA:23,0
+DA:37,4
+LF:5
+LH:3
 BRF:0
 BRH:0
 end_of_record

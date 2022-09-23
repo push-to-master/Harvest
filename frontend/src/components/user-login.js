@@ -17,11 +17,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function UserLogin(props) {
+  
   const login = (user) => {
     props.login(user)
     props.history.push('/');
   }
 
+  /* istanbul ignore next */
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -33,6 +35,7 @@ export default function UserLogin(props) {
   };
 
   return (
+    <div data-testid="UserLogin">
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -99,5 +102,6 @@ export default function UserLogin(props) {
         </Box>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }
