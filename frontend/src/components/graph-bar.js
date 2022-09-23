@@ -5,17 +5,21 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 function BarGraph(props) {
 	const [graphData,setGraphData] = React.useState([])
 	
+	//PROCESSING LOGS DATA TO UNIQUE DATES YIELDS
 	React.useEffect(() => {
         const prepareGraph = () => {
 			const rawData = props.logsData;
 			//Strip all element properties except date and yield
 			let newArray = rawData.map(({_id,description, num_plants,org_id,produce,type,user_id,user_name, ...item}) => item);
+			//Create data point array with dates as the labels and yields as the y values
 			newArray = newArray.map(elem => (
 				{
 					label: elem.date.slice(0,10),
 					y : elem.yield
 				} 
 			  ));
+
+			//Sum up the yields for logs which share the dame date
 			const processData = (data) => {
 				return (Object.values(data.reduce((obj, item) => {
 					var key = item.label
@@ -33,7 +37,7 @@ function BarGraph(props) {
 		prepareGraph();
       }, [props.logsData])
 
-	
+	//bar graph options
 	const options = {
 		animationEnabled: true,
 		exportEnabled: true,

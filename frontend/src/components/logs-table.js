@@ -42,6 +42,7 @@ const LogsTable = props => {
       });
   };
 
+  //sort the log array by earliest date at the top
   const compareDate = (a,b) => a["date"]<b["date"]?1:-1;
   const sortedData = [...logs].sort(compareDate)
   //event handler to change pages in table

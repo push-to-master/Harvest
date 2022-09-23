@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<coverage generated="1663932904517" clover="3.2.0">
-  <project timestamp="1663932904518" name="All files">
-    <metrics statements="91" coveredstatements="57" conditionals="20" coveredconditionals="6" methods="37" coveredmethods="14" elements="148" coveredelements="77" complexity="0" loc="91" ncloc="91" packages="1" files="6" classes="6"/>
+<coverage generated="1663935923713" clover="3.2.0">
+  <project timestamp="1663935923714" name="All files">
+    <metrics statements="88" coveredstatements="60" conditionals="20" coveredconditionals="6" methods="37" coveredmethods="15" elements="145" coveredelements="81" complexity="0" loc="88" ncloc="88" packages="1" files="6" classes="6"/>
     <file name="graphs-list.js" path="C:\Users\matth\Documents\Git repos\Harvest\frontend\src\components\graphs-list.js">
-      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <line num="25" count="1" type="stmt"/>
-      <line num="26" count="1" type="stmt"/>
-      <line num="27" count="1" type="stmt"/>
-      <line num="54" count="1" type="stmt"/>
+      <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="46" count="1" type="stmt"/>
+      <line num="47" count="0" type="stmt"/>
+      <line num="51" count="1" type="stmt"/>
     </file>
     <file name="logs-add-log.js" path="C:\Users\matth\Documents\Git repos\Harvest\frontend\src\components\logs-add-log.js">
       <metrics statements="36" coveredstatements="24" conditionals="10" coveredconditionals="3" methods="15" coveredmethods="5"/>
@@ -64,18 +65,18 @@
       <line num="37" count="0" type="stmt"/>
       <line num="38" count="0" type="stmt"/>
       <line num="41" count="0" type="stmt"/>
-      <line num="45" count="2" type="cond" truecount="0" falsecount="2"/>
-      <line num="46" count="2" type="stmt"/>
-      <line num="48" count="2" type="stmt"/>
-      <line num="49" count="0" type="stmt"/>
-      <line num="53" count="2" type="stmt"/>
-      <line num="54" count="0" type="stmt"/>
+      <line num="46" count="2" type="cond" truecount="0" falsecount="2"/>
+      <line num="47" count="2" type="stmt"/>
+      <line num="49" count="2" type="stmt"/>
+      <line num="50" count="0" type="stmt"/>
+      <line num="54" count="2" type="stmt"/>
       <line num="55" count="0" type="stmt"/>
-      <line num="58" count="2" type="stmt"/>
-      <line num="65" count="14" type="stmt"/>
-      <line num="79" count="0" type="stmt"/>
-      <line num="82" count="0" type="stmt"/>
+      <line num="56" count="0" type="stmt"/>
+      <line num="59" count="2" type="stmt"/>
+      <line num="66" count="14" type="stmt"/>
+      <line num="80" count="0" type="stmt"/>
       <line num="83" count="0" type="stmt"/>
+      <line num="84" count="0" type="stmt"/>
     </file>
     <file name="orgs-card.js" path="C:\Users\matth\Documents\Git repos\Harvest\frontend\src\components\orgs-card.js">
       <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -83,46 +84,29 @@
       <line num="16" count="1" type="stmt"/>
       <line num="17" count="1" type="stmt"/>
       <line num="18" count="1" type="stmt"/>
-      <line num="20" count="1" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
     </file>
     <file name="orgs-list.js" path="C:\Users\matth\Documents\Git repos\Harvest\frontend\src\components\orgs-list.js">
       <metrics statements="11" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
-      <line num="19" count="2" type="stmt"/>
-      <line num="20" count="2" type="stmt"/>
-      <line num="24" count="2" type="stmt"/>
-      <line num="25" count="2" type="stmt"/>
-      <line num="27" count="2" type="stmt"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
       <line num="28" count="2" type="stmt"/>
-      <line num="30" count="0" type="stmt"/>
-      <line num="31" count="0" type="stmt"/>
-      <line num="34" count="0" type="stmt"/>
-      <line num="39" count="2" type="stmt"/>
-      <line num="48" count="0" type="stmt"/>
+      <line num="37" count="0" type="stmt"/>
     </file>
     <file name="user-login.js" path="C:\Users\matth\Documents\Git repos\Harvest\frontend\src\components\user-login.js">
-      <metrics statements="10" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <line num="17" count="1" type="stmt"/>
-      <line num="20" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
-      <line num="25" count="0" type="stmt"/>
-      <line num="26" count="0" type="stmt"/>
-      <line num="27" count="0" type="stmt"/>
-      <line num="28" count="0" type="stmt"/>
-      <line num="32" count="0" type="stmt"/>
-      <line num="35" count="0" type="stmt"/>
-=======
-<coverage generated="1663933305844" clover="3.2.0">
-  <project timestamp="1663933305844" name="All files">
-    <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1" elements="7" coveredelements="4" complexity="0" loc="5" ncloc="5" packages="1" files="1" classes="1"/>
-    <file name="user-login.js" path="/home/gao/Desktop/workspace/Harvest/frontend/src/components/user-login.js">
       <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <line num="17" count="2" type="stmt"/>
-      <line num="21" count="4" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
+      <line num="22" count="4" type="stmt"/>
       <line num="23" count="0" type="stmt"/>
-      <line num="37" count="4" type="stmt"/>
->>>>>>> 3824dad (login test)
+      <line num="24" count="0" type="stmt"/>
+      <line num="39" count="4" type="stmt"/>
     </file>
   </project>
 </coverage>

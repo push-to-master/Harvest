@@ -1,15 +1,8 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
 import TabPanel from './graphs-tabpanel';
-
-import BarGraph from './graph-bar';
-import PieChart from './graph-pie';
-import LineGraph from './graph-line';
 
 import HarvestDataService from "../services/harvest.js";
 
@@ -26,10 +19,13 @@ export default function ShowGraphs() {
     const [logs, setLogs] = React.useState([]);
     const [isFetching, setFetching] = React.useState(true);
 
+    //Before Render: retrieve the logs from the server
     /* istanbul ignore next */
     React.useEffect(() => {
         retrieveLogs();
     }, [])
+
+    //API call to retrieve logs from backend and store them in the component state
     /* istanbul ignore next */
     const retrieveLogs = () => {
         let pageNum = 0;
@@ -46,11 +42,12 @@ export default function ShowGraphs() {
             });
     };
 
-    /* istanbul ignore next */
+   //Handle change when user selects a new tab, change its stored index
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
+    //Render tabs and tabPanels
     return (
         <div data-testid="GraphsList">
             {isFetching ? (

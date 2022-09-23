@@ -9,12 +9,14 @@ import BarGraph from './graph-bar';
 import PieChart from './graph-pie';
 import LineGraph from './graph-line';
 
-
+//Render a container that changes contents based on props
 function TabPanel(props) {
 
     const { children, value, index, logsData, ...other } = props;
     const [lineGraphType, setType] = React.useState("Bean");
-    // console.log(logsData);
+    
+
+    //check selection to decide which graph to render
     if (index === 0) {
         return (
             <div
@@ -25,14 +27,18 @@ function TabPanel(props) {
                 data-testid="Graph"
                 {...other}
             >
+                {/*Render Bar Graph*/}
                 <Box sx={{ pl: 10 }}>
                     <BarGraph logsData={logsData} />
                 </Box>
 
             </div>
         );
+
+    //if line graph selected
     } else if (index === 1) {
         
+        //Handle change when user changes filter option, update the displayed filter box
         const handleChange = (event) => {
             setType(event.target.value);
         };
@@ -49,6 +55,7 @@ function TabPanel(props) {
             >
 
                 <Box sx={{ pl: 10 }}>
+                    {/*Filter Selector*/}
                     <TextField
                         id="outlined-select-crop"
                         select
@@ -63,11 +70,13 @@ function TabPanel(props) {
                             </MenuItem>
                         ))}
                     </TextField>
+                    {/*Render Line Graph*/}
                     <LineGraph logsData = {logsData} type = {lineGraphType}/>
                 </Box>
 
             </div>
         );
+        //If Pie chart has been selected, render the pie chart
     } else {
         return (
             <div
@@ -79,6 +88,7 @@ function TabPanel(props) {
                 {...other}
             >
                 <Box sx={{ pl: 10 }}>
+                    {/*Render Pie Graph*/}
                     <PieChart logsData = {logsData} type = {lineGraphType}/>
                 </Box>
 

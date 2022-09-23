@@ -6,6 +6,8 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const PieChart = (props) => {
     const [graphData, setGraphData] = React.useState([])
 
+
+    //PROCESSING LOGS TO GET UNIQUE TYPES AND RESPECTIVE AGGREGATION
     React.useEffect(() => {
         const prepareGraph = () => {
             const rawData = props.logsData;
@@ -40,7 +42,7 @@ const PieChart = (props) => {
         prepareGraph();
     }, [props.logsData])
 
-
+    //pie chart options
     const options = {
         theme: "light1",
         animationEnabled: true,

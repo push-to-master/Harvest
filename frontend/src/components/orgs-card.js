@@ -17,6 +17,7 @@ const OrgsCard = props => {
   const [orgDescription, setDescription] = useState(props.desc);
   const [isPersonal, setPersonal] = useState(props.personal);
 
+  //Render orgs card
   return (
     <Card  sx={{ maxWidth: 260 , height:280}}>
       <CardMedia

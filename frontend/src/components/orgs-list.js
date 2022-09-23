@@ -3,17 +3,6 @@ import OrgsCard from "./orgs-card";
 import Grid from '@mui/material/Grid';
 import HarvestDataService from "../services/harvest.js";
 
-// import { faker } from '@faker-js/faker';
-// let ORGS = []
-// for (let index = 0; index < 20; index++) {
-//     ORGS[index] = {
-//         id: index,
-//         name: faker.company.name(),
-//         desc: faker.lorem.sentence(15),
-//         personal: Math.random() > 0.5
-//     }
-
-// }
 
 //Orgs list is container to render orgs-card components and store them in a centred div, populate them with data from api call
 const OrgsList = props => {

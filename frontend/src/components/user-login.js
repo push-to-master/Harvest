@@ -18,12 +18,14 @@ const theme = createTheme();
 
 export default function UserLogin(props) {
   
+  //send user data to parent object using props function
   const login = (user) => {
     props.login(user)
     props.history.push('/');
   }
 
   /* istanbul ignore next */
+  //submit user data from form to login function
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
