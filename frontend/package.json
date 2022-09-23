@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -56,12 +56,17 @@
       "./src/components/restaurants-list.js",
       "./src/components/add-review.js" ,
       "./src/components/canvas*",
+      "./src/components/graphs-tabpanel.js",
       "./src/index.js",
       "./src/reportWebVitals.js",
       "./src/App.js",
       "./src/components/login.js",
       "./src/http",
-      "./src/services"
+      "./src/services",
+      "./src/components/graph-line",
+      "./src/components/graph-bar",
+      "./src/components/graph-pie"
+      
     ]
   }
   
