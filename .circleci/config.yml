@@ -14,7 +14,9 @@ jobs:
       - run:
           name: Test frontend
           command: cd frontend/ && npm install && npm test
-      - codecov/upload
+      - codecov/upload:
+        file: './frontend/coverage/clover.xml'
+        token: fb60fdd3-c6e6-41a9-881e-292aac0418ba
 
 workflow:
   version: 2.1
