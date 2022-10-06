@@ -65,17 +65,13 @@ export default function ShowGraphs() {
                         sx={{ borderRight: 1, borderColor: 'divider' }}
                     >
                         <Tab label="Harvest per Day (Bar)" {...a11yProps(0)} />
-                        <Tab label="Harvest per Type (Line)" {...a11yProps(1)} />
-                        <Tab label="Harvest Distribution (Pie)" {...a11yProps(2)} />
+                        <Tab label="Harvest Distribution (Pie)" {...a11yProps(1)} />
                     </Tabs>
                     <TabPanel value={value} index={0} logsData={logs}>
                         {console.log({value})}
                         Yield per Day
                     </TabPanel>
                     <TabPanel value={value} index={1} logsData={logs}>
-                        Yield per Crop
-                    </TabPanel>
-                    <TabPanel value={value} index={2} logsData={logs}>
                         Yield Distribution
                     </TabPanel>
                 </Box>

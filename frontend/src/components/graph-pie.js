@@ -4,43 +4,41 @@ import CanvasJSReact from './canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const PieChart = (props) => {
-    const [graphData, setGraphData] = React.useState([])
-
-
     //PROCESSING LOGS TO GET UNIQUE TYPES AND RESPECTIVE AGGREGATION
-    React.useEffect(() => {
-        const prepareGraph = () => {
-            const rawData = props.logsData;
-            //Strip all element properties except date and yield
-            let newArray = rawData.map(({ _id, description, num_plants, org_id, date, type, user_id, user_name, ...item }) => item);
-            //get the sum of all yields
-            const totalYield = newArray.map(item => item.yield).reduce((prev, next) => prev + next);
-            //process yield and produce to get datapoint array
-            newArray = newArray.map(elem => (
-                {
-                    y: Math.trunc((elem.yield/totalYield)*100),
-                    label: elem.produce,
-                    count:elem.yield
+    const prepareGraph = () => {
+        const rawData = props.logsData;
+        //Strip all element properties except date and yield
+        let newArray = rawData.map(({ _id, description, num_plants, org_id, date, type, user_id, user_name, ...item }) => item);
+        //get the sum of all yields
+        const totalYield = newArray.map(item => item.yield).reduce((prev, next) => prev + next);
+        //process yield and produce to get datapoint array
+        newArray = newArray.map(elem => (
+            {
+                y: Math.trunc((elem.yield / totalYield) * 100),
+                label: elem.produce,
+                count: elem.yield
+            }
+        ));
+        //get unique datapoints
+        const processData = (data) => {
+            return (Object.values(data.reduce((obj, item) => {
+                var key = item.label
+                if (!obj[key]) {
+                    obj[key] = Object.assign(item)
+                } else {
+                    obj[key].y += item.y
+                    obj[key].count += item.count
                 }
-            ));
-            //get unique datapoints
-            const processData = (data) => {
-                return (Object.values(data.reduce((obj, item) => {
-                    var key = item.label
-                    if (!obj[key]) {
-                        obj[key] = Object.assign(item)
-                    } else {
-                        obj[key].y += item.y
-                        obj[key].count+=item.count
-                    }
-                    return obj
-                }, {})))
-            };
-            newArray = processData(newArray);
-            setGraphData(newArray)
-        }
-        prepareGraph();
-    }, [props.logsData])
+                return obj
+            }, {})))
+        };
+        newArray = processData(newArray);
+        return newArray;
+    }
+
+    const [graphData, setGraphData] = React.useState(()=>{
+        return prepareGraph();}
+    )
 
     //pie chart options
     const options = {

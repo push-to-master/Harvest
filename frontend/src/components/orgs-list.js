@@ -35,8 +35,8 @@ const OrgsList = props => {
             }}>
                 {orgs.map((org) => {
                     return (
-                        <Grid item key={org.id}>
-                            <OrgsCard name={org.name} desc={org.description} personal={org.is_personal} key={org.id} />
+                        <Grid key={org.id} item>
+                            <OrgsCard name={org.name} desc={org.description} personal={org.is_personal}/>
                         </Grid>
                     )
                 })}
