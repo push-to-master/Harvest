@@ -4,6 +4,7 @@ import ReviewsCtrl from "../controller/reviews.controller.js"
 import LogsCtrl from "../controller/logs.controller.js"
 import LoginCtrl from "../controller/login.controller.js"
 import OrgsCtrl from "../controller/orgs.controller.js"
+import CategoryCtrl from "../controller/category.controller.js"
 
 const router = express.Router()
 
@@ -32,4 +33,7 @@ router
     .get(OrgsCtrl.apiGetOrgs)
     .post(OrgsCtrl.apiPostOrg)
 
+router
+    .route("/category")
+    .get(CategoryCtrl.apiGetCategory)
 export default router

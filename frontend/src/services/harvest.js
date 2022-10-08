@@ -40,6 +40,9 @@ class HarvestDataService {
     return http.get("/orgs");
   }
 
+  getTypes(page = 0){
+    return http.get("/category");
+  }
 }
 
 export default new HarvestDataService();
