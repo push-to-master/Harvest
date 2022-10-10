@@ -92,6 +92,7 @@ const LogsAddLog = props => {
     <div>
       {/*START ADD LOG FORM*/}
       <Grid container spacing={2}
+      
         sx={{ width: '90%', overflow: 'hidden', margin: 'auto', p: 2 }}
       >
         <Grid item xs={3}>
