@@ -2,7 +2,7 @@ import CategoryDAO from "../dao/categoryDAO.js"
 
 export default class CategoryController {
   static async apiGetCategory(req, res, next) {
-    const CategoryPerPage = req.query.CategoryPerPage ? parseInt(req.query.CategoryPerPage, 10) : 50
+    const CategoryPerPage = req.query.CategoryPerPage ? parseInt(req.query.CategoryPerPage, 10) : 100
     const page = req.query.page ? parseInt(req.query.page, 10) : 0
 
   
