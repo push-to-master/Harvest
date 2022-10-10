@@ -12,11 +12,11 @@ import HarvestDataService from "../services/harvest.js";
 const columns = [
   { id: 'date', label: 'Date', minWidth: 50 },
   { id: 'user_name', label: 'Farmer', minWidth: 50 },
+  { id: 'category', label: 'Category', minWidth: 50},
   { id: 'type', label: 'Crop Type', minWidth: 50 },
   { id: 'produce', label: 'Produce Type', minWidth: 50 },
   { id: 'description', label: 'Log Description', minWidth: 50 },
-  { id: 'num_plants', label: 'No. of Plants', minWidth: 50 },
-  { id: 'yield', label: 'Yield (kg)', minWidth: 170, align: 'right' }
+  { id: 'yield', label: 'Yield (grams)', minWidth: 170, align: 'right' }
 ];
 
 
