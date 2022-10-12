@@ -10,6 +10,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import Autocomplete from '@mui/material/Autocomplete';
 
+import {filterByDate, filterByFood, filterByType, filterByCategory} from './filters/filters.js'
+
 //Function to convert an objects date object into a string literal for neat display (args: dateObject returns: string)
 const dateString = (dateObject) => {
   const date = dateObject;
@@ -36,33 +38,33 @@ const GraphsFilters = (props) => {
   }
   //Handler to apply filters to log data
   const handleFilter =() =>{
-    const tempLogs = logData;
+    let tempLogs = logData;
     //Process date filters
     if (startDate == "NaN-NaN-NaN"&&endDate!="NaN-NaN-NaN") { //if the user entered only end date
         console.log("Filtering by End Date only")
-        //tempLogs = filterByDate(tempLogs,null,endDate)
+        tempLogs = filterByDate(tempLogs,null,endDate)
     }
     else if (endDate =="NaN-NaN-NaN" &&startDate!="NaN-NaN-NaN") { //if the user entered only start date
         console.log("Filtering by Start Date only")
-        //tempLogs = filterByDate(tempLogs,startDate,null)
+        tempLogs = filterByDate(tempLogs,startDate,null)
     }
     else if (endDate!="NaN-NaN-NaN"&&startDate!="NaN-NaN-NaN" &&startDate<endDate){ //if the user entered both dates and valid ordering of dates
         console.log("Filtering between dates")
-        //tempLogs = filterByDate(tempLogs,startDate,endDate)
+        tempLogs = filterByDate(tempLogs,startDate,endDate)
     }
 
     //Process type filters, start with smallest subtype then work towards supertype
     if (selectedProduce!="") {
-        console.log("Filtering by Food type")
-        //tempLogs = filterByFood(tempLogs,selectedProduce)
+        console.log("Filtering by Produce")
+        tempLogs = filterByFood(tempLogs,selectedProduce)
     }
     else if(selectedType!=""){
-        console.log("Filtering by Category Subtype")
-        //tempLogs = filterByType(tempLogs,selectedType)
+        console.log("Filtering by Type")
+        tempLogs = filterByType(tempLogs,selectedType)
     }
     else if(selectedCategory!=""){
         console.log("Filtering by Category")
-        //tempLogs = filterByCategory(tempLogs,selectedCategory)~~~~
+        tempLogs = filterByCategory(tempLogs,selectedCategory)
     }
     //Use function provided by graphs-list to apply the filtered logs state
     props.applyFilter(tempLogs);
