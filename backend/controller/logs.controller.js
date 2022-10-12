@@ -12,18 +12,18 @@ export default class LogsController {
       const produce = req.body.produce
       const type = req.body.type
       const totYield = req.body.yield
-      const numPlants = req.body.num_plants
       const date = new Date()
       const description = req.body.description
+      const category = req.body.category
 
       const logResponse = await LogsDAO.addLog(
         userInfo,
         produce,
         type,
         totYield,
-        numPlants,
         date,
-        description
+        description,
+        category
       )
       res.json({ status: "success" })
     } catch (e) {

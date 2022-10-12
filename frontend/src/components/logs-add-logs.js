@@ -12,11 +12,6 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-
 import Autocomplete from '@mui/material/Autocomplete';
 
 //Function to convert an objects date object into a string literal for neat display (args: dateObject returns: string)
@@ -37,15 +32,16 @@ const LogsAddLog = props => {
   const [selectedDate, setDate] = useState(dateString(new Date()))
   const [logsUploaded,setLogsUploaded] = useState(0);
 
-  const [selectedCategory, setCategory] = useState("None")
-  const [selectedType, setType] = useState("None")
-  const [selectedProduce, setProduce] = useState("None")
+  const [selectedCategory, setCategory] = useState("")
+  const [selectedType, setType] = useState("")
+  const [selectedProduce, setProduce] = useState("")
 
   //Function returns true if the user has not selected a value for all fields or has not logged in
   const invalidForm = () =>{
     return (
-      (selectedType ==="None" ||
-      selectedProduce==="None"||
+      (selectedType ==="" ||
+      selectedProduce===""||
+      selectedCategory === ""||
       harvestDescription ==="" ||
       !currentUser||
       cropYield <=0)
@@ -84,34 +80,76 @@ const LogsAddLog = props => {
       HarvestDataService.getTypes()
           .then(response => {            
               setTypedata(response.data.category);
-              setInitialArrays();
+              setInitialArrays(response.data.category);
           })
           .catch(e => {
               console.log(e);
           });
   }; 
   // sets all initial input option arrays
-  const setInitialArrays = () =>{
+  const setInitialArrays = (data) =>{
     // getting list of unique Supertypes aka categories.
-    setCategoryArray([...new Set(typedata.map(elem => elem.Supertype))]);
-    setTypeArray( [...new Set(typedata.map(elem => elem.Type))]);
-    setProduce([...new Set(typedata.map(elem => elem.Type))]);
+    setCategoryArray([...new Set(data.map(elem => elem.Supertype))]);
+    setTypeArray( [...new Set(data.map(elem => elem.Type))]);
+    setProduceArray([...new Set(data.map(elem => elem.Food))]);
   }
 
   // sets the category and gets an array of types that fall under that category
-  const handleSetCategory = (event ) =>{
-    setCategory(event.target.value);
-    //changes the type and produce array to what is restricted by the category
-    const temp = typedata.filter(elem => elem.Supertype === event.target.value);
-    setTypeArray([...new Set(temp.map(elem => elem.Type))]);
-    
-    console.log(temp);
+  const handleSetCategory = (value,reason ) =>{
+    if(reason === "clear"){
+      setInitialArrays(typedata);
+      setCategory("");
+      setType("");
+      setProduce("");
+    }else{
+    setCategory(value);
+      //changes the type and produce array to what is restricted by the category
+      var temp = typedata.filter(elem => elem.Supertype ===value);
+      var temp2 = [...new Set(temp.map(elem => elem.Type))];
+      setTypeArray(temp2);
+      temp2 = [...new Set(temp.map(elem => elem.Food))];
+      setProduceArray(temp2);
+    }
+  };
+
+  const handleSetType = (value, reason ) =>{
+    if(reason === "clear"){
+      setProduceArray([...new Set(typedata.map(elem => elem.Food))]);
+      setProduce("");
+      setType("");
+    }else {
+      console.log(reason);
+      setType(value);
+      let obj = typedata.find(o => o.Type === value);
+      if (selectedCategory === "" ){
+        setCategory(obj.Supertype);
+        setCategoryArray([obj.Supertype]);
+      }
+     var temp = typedata.filter(elem => elem.Type === value);
+      var temp2 = [...new Set(temp.map(elem => elem.Food))];
+      setProduceArray(temp2);
+    }
+  };
+
+  const handleSetProduce = (value,reason ) =>{
+    setProduce(value);
+    let obj = typedata.find(o => o.Food === value);
+    if(selectedType === ""){
+      setType(obj.Type);
+      var temp = typedata.filter(elem => elem.Food === value);
+      var temp2 = [...new Set(temp.map(elem => elem.Type))];
+      setTypeArray(temp2);
+    }
+    if (selectedCategory === ""){
+      setCategory(obj.Supertype);
+      setCategoryArray([obj.Supertype]);
+    }
   };
   return (
     
     <div>
       {/*START ADD LOG FORM*/}
-      <Accordion sx={{ width: '90%', overflow: 'hidden',  left:'5%', bottom: '1%', background: '#e8f5e9'}} >
+    <Accordion sx={{ width: '90%', overflow: 'hidden',  left:'5%', bottom: '1%', background: '#e8f5e9'}} >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -122,12 +160,58 @@ const LogsAddLog = props => {
           </Typography>
           <Typography sx={{ color: 'text.secondary' }}>Add new harvest entry</Typography>
         </AccordionSummary>
-    <AccordionDetails sx={{ width: '90%', overflow: 'hidden', margin: 'auto'}}>
-    <Grid container spacing={2}
-      
-      sx={{ width: '90%', overflow: 'hidden', margin: 'auto', p: 2 }}
+    <AccordionDetails sx={{ width: '90%', mx: '5%', mr: '5%'}}>
+    <Grid container rowSpacing={6}
+          columnSpacing={{  sm: 10, md: 10 }}
+          sx={{ width: '70%', overflow: 'hidden', }}
+          justifyContent="center"
     >
-      <Grid item xs={3}>
+      <Grid item xs={3.5}> 
+      <Autocomplete
+        label="Select Category"
+        id="category-select"
+        options ={category}
+        value={selectedCategory}
+        disablePortal
+        onChange={(event, value,reason) => handleSetCategory(value,reason)}
+        renderInput={(params) => (
+          <TextField 
+              {...params}
+              label="Select Category" />
+        )}
+      />
+      </Grid>
+      <Grid item xs={3.5}> 
+      <Autocomplete
+        label="Select Type"
+        id="type-select"
+        options ={type}
+        value={selectedType}
+        disablePortal
+        onChange={(event, value,reason) => handleSetType(value,reason)}
+        renderInput={(params) => (
+          <TextField 
+              {...params}
+              label="Select Type" />
+        )}
+      />
+      </Grid>
+      <Grid item xs={3.5}> 
+      <Autocomplete
+        label="Select Produce"
+        id="produce-select"
+        options ={produce}
+        value={selectedProduce}
+        disablePortal
+        onChange={(event, value,reason) => handleSetProduce(value,reason)}
+        renderInput={(params) => (
+          <TextField 
+              {...params}
+              label="Select Produce" />
+        )}
+      />
+      </Grid>
+      <Grid item xs={3.5}> 
         <TextField
           id="add_log_date"
           label="Date of Harvest"
@@ -140,58 +224,23 @@ const LogsAddLog = props => {
           }}
         />
       </Grid>
-      <Grid item xs={3}> 
-      <FormControl fullWidth>
+      <Grid item xs={3.5}> 
         <TextField
-          labelId= "add_log_category_label"
-          id="add_log_category"
-          label="Select Category"
-          value={selectedCategory}
-          onChange={handleSetCategory}
-          select
-        >
-          
-          {category.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </TextField>
-        </FormControl>
-      </Grid>
-      <Grid item xs={3}>  
-        <TextField
-          id="add_log_type"
-          select
-          label="Select Type"
-          value={selectedType}
-          onChange={e => setType(e.target.value)}
-          sx={{ width: '100%' }}
-        >
-          {type.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option }
-            </MenuItem>
-          ))}
-        </TextField>
-      </Grid>
-      <Grid item xs={3}>
-        <TextField
-          label="Yield (g)"
+          label="Yield (grams)"
           id="add_log_yield"
           type="number"
           sx={{ width: '100%' }}
           value={cropYield}
           onChange={e => setYield(parseFloat(e.target.value))}
           InputProps={{
-            endAdornment: <InputAdornment position="start">kg</InputAdornment>,
+            endAdornment: <InputAdornment position="start">g</InputAdornment>,
           }}
           InputLabelProps={{
             shrink: true,
           }}
         />
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={3.5}> 
         <TextField
           label="Harvest Description"
           id="add_log_description"
@@ -201,8 +250,8 @@ const LogsAddLog = props => {
           onChange={e => setDescription(e.target.value)}
         />
       </Grid>
-      <Grid item xs={6}>
-        <Button variant="contained" disabled={invalidForm()} onClick={()=>{uploadLog()}}>
+      <Grid item sm={1} xl= {10.5}>
+        <Button sx ={{width: '100%'}}  variant="contained" disabled={invalidForm()} onClick={()=>{uploadLog()}}>
           Submit Harvest
         </Button>
 
