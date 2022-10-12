@@ -15,7 +15,7 @@ export default class LogsDAO {
     }
   }
 
-  static async addLog(userInfo, produce, type, totYield, numPlants, date, description,category) {
+  static async addLog(userInfo, produce, type, totYield, date, description, category) {
     try {
       const reviewDoc = { 
         user_name: userInfo.name,
@@ -24,7 +24,6 @@ export default class LogsDAO {
         produce: produce,
         type: type,
         yield: totYield,
-        num_plants: numPlants,
         date: date,
         description: description,
         category: category

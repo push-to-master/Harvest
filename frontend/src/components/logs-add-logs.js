@@ -55,7 +55,8 @@ const LogsAddLog = props => {
       type: selectedType,
       category: selectedCategory,
       yield: cropYield,
-      description : harvestDescription
+      description : harvestDescription,
+      date: selectedDate
     };
     HarvestDataService.createLog(data)
         .then(response => {

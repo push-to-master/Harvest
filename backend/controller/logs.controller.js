@@ -12,7 +12,7 @@ export default class LogsController {
       const produce = req.body.produce
       const type = req.body.type
       const totYield = req.body.yield
-      const date = new Date()
+      const date = new Date(req.body.date)
       const description = req.body.description
       const category = req.body.category
 
