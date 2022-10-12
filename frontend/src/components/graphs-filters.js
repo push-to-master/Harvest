@@ -244,12 +244,6 @@ const GraphsFilters = (props) => {
         </Button>
 
       </Grid>
-      <Grid item sm={1} xl= {10.5}>
-        <Button sx ={{width: '100%'}}  variant="contained" disabled={invalidForm()} onClick={()=>{handleFilter()}}>
-          Apply
-        </Button>
-
-      </Grid>
     </Grid>
     {/*END ADD LOG FORM*/}
     </AccordionDetails>

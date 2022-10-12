@@ -1,21 +1,24 @@
 /* App.js */
-import React from 'react';
+import React, { useEffect } from 'react';
 import CanvasJSReact from './canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const PieChart = (props) => {
     //PROCESSING LOGS TO GET UNIQUE TYPES AND RESPECTIVE AGGREGATION
+    const [categoryFilter,setCategoryFilter] = React.useState(props.categoryFilter);
+    const [typeFilter,setTypeFilter] = React.useState(props.typeFilter);
     const prepareGraph = () => {
         const rawData = props.logsData;
         //Strip all element properties except date and yield
-        let newArray = rawData.map(({ _id, description, num_plants, org_id, date, type, user_id, user_name, ...item }) => item);
+        // let newArray = rawData.map(({ _id, description, num_plants, org_id, date, type, user_id, user_name, ...item }) => item);
+        let newArray = rawData
         //get the sum of all yields
         const totalYield = newArray.map(item => item.yield).reduce((prev, next) => prev + next);
         //process yield and produce to get datapoint array
         newArray = newArray.map(elem => (
             {
                 y: Math.trunc((elem.yield / totalYield) * 100),
-                label: elem.produce,
+                label: elem.category,
                 count: elem.yield
             }
         ));
@@ -35,6 +38,7 @@ const PieChart = (props) => {
         newArray = processData(newArray);
         return newArray;
     }
+    
 
     const [graphData, setGraphData] = React.useState(()=>{
         return prepareGraph();}

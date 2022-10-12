@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import TabPanel from './graphs-tabpanel';
 
 import HarvestDataService from "../services/harvest.js";
-import GraphsFilters from './graphs-filter-bar';
+import GraphsFilters from './graphs-filters';
 /* istanbul ignore next */
 function a11yProps(index) {
     return {
