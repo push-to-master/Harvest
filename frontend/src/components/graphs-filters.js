@@ -153,7 +153,7 @@ const GraphsFilters = (props) => {
     
     <div>
       {/*START ADD LOG FORM*/}
-    <Accordion sx={{ left:'5%', bottom: '1%', background: '#efefef'}} >
+    <Accordion sx={{width:'90%', left:'5%', bottom: '1%', background: '#efefef'}} >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -162,9 +162,9 @@ const GraphsFilters = (props) => {
           <Typography sx={{ color: 'text.secondary' }}>Filter Data</Typography>
         </AccordionSummary>
     <AccordionDetails sx={{ width: '90%', mx: '5%', mr: '5%'}}>
-    <Grid container rowSpacing={6}
+    <Grid container rowSpacing={2}
           columnSpacing={{  sm: 10, md: 5 }}
-          sx={{ width: '70%', overflow: 'hidden', }}
+          sx={{ width: '70%'}}
           justifyContent="center"
     >
       <Grid item xs={3.5}> 
