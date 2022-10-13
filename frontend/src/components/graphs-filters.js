@@ -153,7 +153,7 @@ const GraphsFilters = (props) => {
     
     <div>
       {/*START ADD LOG FORM*/}
-    <Accordion sx={{ width: '50%',  left:'5%', bottom: '1%', background: '#efefef'}} >
+    <Accordion sx={{ left:'5%', bottom: '1%', background: '#efefef'}} >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
