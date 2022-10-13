@@ -39,8 +39,6 @@ const GraphPieFilters = (props) => {
 
             const typesArray = filterByCategory(logs, uniqueCategories[0])
             const uniqueTypes = [...new Set(typesArray.map(item => item.type))];
-            
-            
             setType(uniqueTypes[0]);
 
             setTypes(uniqueTypes);
@@ -52,6 +50,7 @@ const GraphPieFilters = (props) => {
         setCategory(value);
         const typesArray = filterByCategory(logs, value);
         const uniqueTypes = [...new Set(typesArray.map(item => item.type))];
+        setType(uniqueTypes[0])
         setTypes(uniqueTypes);
         setShowCategories(true);
     }

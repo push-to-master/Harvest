@@ -28,7 +28,12 @@ const PieChart = (props) => {
         }
         else if(typeFilter!==null){
             newArray = filterByCategory(newArray,categoryFilter);
+            console.log("CAT")
+            console.log(categoryFilter)
             newArray = filterByType(newArray,typeFilter);
+            console.log("TYPE")
+            console.log(typeFilter)
+            console.log(newArray);
             filterSelect = 2;
         }
         const totalYield = newArray.map(item => item.yield).reduce((prev, next) => prev + next);
