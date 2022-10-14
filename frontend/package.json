@@ -65,8 +65,11 @@
       "./src/services",
       "./src/components/graph-line",
       "./src/components/graph-bar",
-      "./src/components/graph-pie"
-      
+      "./src/components/graph-pie",
+      "./src/components/graphs-filters.js",
+      "./src/components/graphs-pie-filters.js",
+      "./src/components/logs-add-logs.js",
+      "./src/components/user-login.js"
     ]
   }
   
