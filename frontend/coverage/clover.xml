@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1665756896624" clover="3.2.0">
-  <project timestamp="1665756896624" name="All files">
-    <metrics statements="88" coveredstatements="73" conditionals="24" coveredconditionals="17" methods="27" coveredmethods="15" elements="139" coveredelements="105" complexity="0" loc="88" ncloc="88" packages="2" files="5" classes="5"/>
+<coverage generated="1665757633761" clover="3.2.0">
+  <project timestamp="1665757633761" name="All files">
+    <metrics statements="78" coveredstatements="69" conditionals="22" coveredconditionals="17" methods="23" coveredmethods="14" elements="123" coveredelements="100" complexity="0" loc="78" ncloc="78" packages="2" files="5" classes="5"/>
     <package name="components">
-      <metrics statements="48" coveredstatements="33" conditionals="10" coveredconditionals="3" methods="21" coveredmethods="9"/>
+      <metrics statements="38" coveredstatements="29" conditionals="8" coveredconditionals="3" methods="17" coveredmethods="8"/>
       <file name="graphs-list.js" path="F:\WITS-WORK\Harvest\frontend\src\components\graphs-list.js">
         <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
         <line num="18" count="1" type="stmt"/>
@@ -15,32 +15,22 @@
         <line num="55" count="1" type="stmt"/>
       </file>
       <file name="logs-table.js" path="F:\WITS-WORK\Harvest\frontend\src\components\logs-table.js">
-        <metrics statements="25" coveredstatements="16" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="4"/>
+        <metrics statements="15" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="3"/>
         <line num="12" count="2" type="stmt"/>
         <line num="23" count="2" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="46" count="1" type="cond" truecount="0" falsecount="2"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="66" count="7" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="47" count="1" type="cond" truecount="0" falsecount="2"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="69" count="7" type="stmt"/>
       </file>
       <file name="orgs-card.js" path="F:\WITS-WORK\Harvest\frontend\src\components\orgs-card.js">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>

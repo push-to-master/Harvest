@@ -27,6 +27,7 @@ const LogsTable = props => {
   
 
   //API request to get log data and store it in the "logs" react state
+  /* istanbul ignore next */
   React.useEffect(() => {
     retrieveLogs();
   }, [])
@@ -46,11 +47,13 @@ const LogsTable = props => {
   const compareDate = (a,b) => a["date"]<b["date"]?1:-1;
   const sortedData = [...logs].sort(compareDate)
   //event handler to change pages in table
+  /* istanbul ignore next */
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
   //event handler to change the amount of logs displayed per page in the table
+  /* istanbul ignore next */
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
@@ -77,6 +80,7 @@ const LogsTable = props => {
             {sortedData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
+                /* istanbul ignore next */
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
                     {columns.map((column) => {

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.53% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/26</span>
+                <span class='fraction'>12/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.36% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/11</span>
+                <span class='fraction'>3/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/25</span>
+                <span class='fraction'>12/15</span>
             </div>
         
             
@@ -171,7 +171,11 @@
 <a name='L106'></a><a href='#L106'>106</a>
 <a name='L107'></a><a href='#L107'>107</a>
 <a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,8 +204,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -219,14 +224,16 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -250,11 +257,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -308,6 +316,7 @@ const LogsTable = props =&gt; {
   
 &nbsp;
   //API request to get log data and store it in the "logs" react state
+  /* istanbul ignore next */
   React.useEffect(() =&gt; {
     retrieveLogs();
   }, [])
@@ -327,14 +336,16 @@ const LogsTable = props =&gt; {
   const compareDate = <span class="fstat-no" title="function not covered" >(a</span>,b) =&gt; <span class="cstat-no" title="statement not covered" >a["date"]&lt;b["date"]?1:-1;</span>
   const sortedData = [...logs].sort(compareDate)
   //event handler to change pages in table
-  const handleChangePage = <span class="fstat-no" title="function not covered" >(e</span>vent, newPage) =&gt; {
-<span class="cstat-no" title="statement not covered" >    setPage(newPage);</span>
+  /* istanbul ignore next */
+  const handleChangePage = (event, newPage) =&gt; {
+    setPage(newPage);
   };
 &nbsp;
   //event handler to change the amount of logs displayed per page in the table
-  const handleChangeRowsPerPage = <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
-<span class="cstat-no" title="statement not covered" >    setRowsPerPage(+event.target.value);</span>
-<span class="cstat-no" title="statement not covered" >    setPage(0);</span>
+  /* istanbul ignore next */
+  const handleChangeRowsPerPage = (event) =&gt; {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
   };
   //JSX to display the table with styling
   return (
@@ -358,11 +369,12 @@ const LogsTable = props =&gt; {
             {sortedData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map(<span class="fstat-no" title="function not covered" >(r</span>ow) =&gt; {
-<span class="cstat-no" title="statement not covered" >                return (</span>
+                /* istanbul ignore next */
+                return (
                   &lt;TableRow hover role="checkbox" tabIndex={-1} key={row._id}&gt;
-                    {columns.map(<span class="fstat-no" title="function not covered" >(c</span>olumn) =&gt; {
-                      const value = <span class="cstat-no" title="statement not covered" >row[column.id];</span>
-<span class="cstat-no" title="statement not covered" >                      return (</span>
+                    {columns.map((column) =&gt; {
+                      const value = row[column.id];
+                      return (
                         &lt;TableCell key={column.id} size='small' align={column.align}&gt;
                           {column.id === "date" ? (new Date(value)).toLocaleDateString('en-GB') : value}
                         &lt;/TableCell&gt;
@@ -394,7 +406,7 @@ export default LogsTable;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-14T14:14:56.313Z
+                at 2022-10-14T14:27:13.226Z
             </div>
         <script src="../prettify.js"></script>
         <script>

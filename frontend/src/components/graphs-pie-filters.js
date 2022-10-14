@@ -15,7 +15,7 @@ const GraphPieFilters = (props) => {
     const [categories, setCategories] = React.useState([]);
     const [types, setTypes] = React.useState([]);
 
-    const handleAggregate = (value) => {
+    const handleAggregate = (value) => { //function to set states
         console.log(value);
         if (value == 0) { //if all is selected
             setCategory(null);
