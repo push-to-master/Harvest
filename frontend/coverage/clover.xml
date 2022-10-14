@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1665757633761" clover="3.2.0">
-  <project timestamp="1665757633761" name="All files">
-    <metrics statements="78" coveredstatements="69" conditionals="22" coveredconditionals="17" methods="23" coveredmethods="14" elements="123" coveredelements="100" complexity="0" loc="78" ncloc="78" packages="2" files="5" classes="5"/>
+<coverage generated="1665757926254" clover="3.2.0">
+  <project timestamp="1665757926255" name="All files">
+    <metrics statements="75" coveredstatements="68" conditionals="22" coveredconditionals="17" methods="21" coveredmethods="14" elements="118" coveredelements="99" complexity="0" loc="75" ncloc="75" packages="2" files="5" classes="5"/>
     <package name="components">
-      <metrics statements="38" coveredstatements="29" conditionals="8" coveredconditionals="3" methods="17" coveredmethods="8"/>
+      <metrics statements="35" coveredstatements="28" conditionals="8" coveredconditionals="3" methods="15" coveredmethods="8"/>
       <file name="graphs-list.js" path="F:\WITS-WORK\Harvest\frontend\src\components\graphs-list.js">
-        <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
       </file>
       <file name="logs-table.js" path="F:\WITS-WORK\Harvest\frontend\src\components\logs-table.js">
         <metrics statements="15" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="3"/>

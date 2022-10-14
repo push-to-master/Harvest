@@ -43,11 +43,13 @@ export default function ShowGraphs() {
     };
 
    //Handle change when user selects a new tab, change its stored index
+    /* istanbul ignore next */
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
     //provide a function to child components to change the local log records to filtered ones
+    /* istanbul ignore next */
     async function applyFilter(processedLogs){
         setLogs(processedLogs);
     }
