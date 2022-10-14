@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AddReview from "./components/add-review";
 import Restaurant from "./components/restaurants";
 // import Login from "./components/login";
-import LogsAddLog from "./components/logs-add-log";
+import LogsAddLog from "./components/logs-add-logs";
 import OrgsList from "./components/orgs-list";
 import ShowGraphs from "./components/graphs-list";
 import UserLogin from "./components/user-login";

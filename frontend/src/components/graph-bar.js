@@ -46,7 +46,7 @@ function BarGraph(props) {
 			text: "Harvest Per Day"
 		},
 		axisY: {
-			title:"Yield (kg)",
+			title:"Yield (g)",
 			includeZero: true
 		},
 		axisX:{
