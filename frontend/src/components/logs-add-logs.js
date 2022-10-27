@@ -26,7 +26,6 @@ const dateString = (dateObject) => {
 //React component to take user input through various forms and dropdowns, and send an API request to server to add a new log
 const LogsAddLog = props => {
   const [currentUser] = useState(props.user)
-  const [currentOrg, setCurrentOrg] = useState(props.org)
   const [harvestDescription, setDescription] = useState("")
   const [cropYield, setYield] = useState(0)
   const [selectedDate, setDate] = useState(dateString(new Date()))
@@ -146,6 +145,7 @@ const LogsAddLog = props => {
       setCategoryArray([obj.Supertype]);
     }
   };
+  console.log("Add Log:",currentUser);
   return (
     
     <div>
@@ -263,7 +263,7 @@ const LogsAddLog = props => {
     </Accordion>
     
     {/*TABLE DATA COMPONENT*/}
-    <LogsTable key={logsUploaded}/>
+    <LogsTable key={logsUploaded} user = {currentUser}/>
     {/*END TABLE DATA COMPONENT*/}
   </div>
 );

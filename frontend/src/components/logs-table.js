@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import HarvestDataService from "../services/harvest.js";
+import { filterByUsername } from './filters/filters.js'
 
 const columns = [
   { id: 'date', label: 'Date', minWidth: 50 },
@@ -24,6 +25,7 @@ const LogsTable = props => {
   const [logs, setLogs] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [currentUser,setCurrentUser] = React.useState(props.user);
   
 
   //API request to get log data and store it in the "logs" react state
@@ -35,14 +37,15 @@ const LogsTable = props => {
     let pageNum = 0;
     HarvestDataService.getAllLogs(pageNum)
       .then(response => {
-        console.log(response.data.logs);
-        setLogs(response.data.logs);
+        let userLogs = filterByUsername(response.data.logs,currentUser.username)
+        console.log(userLogs);
+        setLogs(userLogs);
       })
       .catch(e => {
         console.log(e);
       });
   };
-
+  console.log("LOGS",currentUser);
   //sort the log array by earliest date at the top
   const compareDate = (a,b) => a["date"]<b["date"]?1:-1;
   const sortedData = [...logs].sort(compareDate)

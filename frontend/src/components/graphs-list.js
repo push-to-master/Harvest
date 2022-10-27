@@ -6,6 +6,7 @@ import TabPanel from './graphs-tabpanel';
 
 import HarvestDataService from "../services/harvest.js";
 import GraphsFilters from './graphs-filters';
+import { filterByUsername } from './filters/filters.js'
 /* istanbul ignore next */
 function a11yProps(index) {
     return {
@@ -14,10 +15,11 @@ function a11yProps(index) {
     };
 }
 
-export default function ShowGraphs() {
+export default function ShowGraphs(props) {
     const [value, setValue] = React.useState(0);
     const [logs, setLogs] = React.useState([]);
     const [isFetching, setFetching] = React.useState(true);
+    const [currentUser,setCurrentUser] = React.useState(props.user)
 
     //Before Render: retrieve the logs from the server
     /* istanbul ignore next */
@@ -32,7 +34,9 @@ export default function ShowGraphs() {
         HarvestDataService.getAllLogs(pageNum)
             .then(response => {
                 // console.log(response.data.logs);
-                setLogs(response.data.logs);
+                let userLogs = filterByUsername(response.data.logs,currentUser.username)
+                console.log(userLogs);
+                setLogs(userLogs);
                 // logs.current = response.data.logs;
                 setFetching(false);
             })

@@ -29,6 +29,24 @@ function App() {
     setUser(null)
   }
 
+  const checkLoggedIn = (props) => {
+    if (user===null) {
+      return <UserLogin {...props} login={login} validUsers={validUsers}/>
+    }
+    else{
+      return <LogsAddLog {...props} user={user} />
+    }
+  }
+  const checkLoggedInGraphs = (props) => {
+    if (user===null) {
+      return <UserLogin {...props} login={login} validUsers={validUsers}/>
+    }
+    else{
+      return <ShowGraphs {...props} user={user} />
+    }
+  }
+
+  console.log(user===null)
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -105,9 +123,11 @@ function App() {
           />
           <Route 
             exact path={["/", "/logs"]} 
-            render={(props) => (
-              <LogsAddLog {...props} user={user} />
-            )}
+            
+            render={
+              (props) => (
+                checkLoggedIn(props))
+              }
           />
           <Route 
             path="/organisations"
@@ -118,7 +138,7 @@ function App() {
           <Route 
             path="/show-graph"
             render={(props) => (
-              <ShowGraphs {...props} user={user} />
+              checkLoggedInGraphs(props)
             )}
           />
 
