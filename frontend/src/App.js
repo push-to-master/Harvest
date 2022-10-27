@@ -9,18 +9,19 @@ import LogsAddLog from "./components/logs-add-logs";
 import OrgsList from "./components/orgs-list";
 import ShowGraphs from "./components/graphs-list";
 import UserLogin from "./components/user-login";
+import UserSignup from "./components/user-signup";
 
-const validUsers = [
-  {username: "Jessie",password:"Jessie"},
-  {username: "Matt", password:"Matt"},
-  {username:"Xin",password:"Xin"}
-]
+let validUsers = {
+   "Jessie":"Jessie",
+   "Matt":"Matt",
+   "Xin":"Xin"
+}
 
 function App() {
   const [user, setUser] = React.useState(null);
 
   async function login(user = null) {
-    console.log(user);
+    // console.log(user);
     setUser(user);
   }
 
@@ -44,7 +45,7 @@ function App() {
           </li> */}
           <li className="nav-item" >
             { user ? (
-              <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
+              <a onClick={logout} href="/login" className="nav-link" style={{cursor:'pointer'}}>
                 Logout {user.username}
               </a>
             ) : (            
@@ -94,6 +95,12 @@ function App() {
             path="/login"
             render={(props) => (
               <UserLogin {...props} login={login} validUsers={validUsers}/>
+            )}
+          />
+          <Route 
+            path="/signup"
+            render={(props) => (
+              <UserSignup {...props} validUsers={validUsers}/>
             )}
           />
           <Route 

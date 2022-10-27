@@ -16,22 +16,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
 
-export default function UserLogin(props) {
+export default function UserSignup(props) {
+
   const [message, setMessage] = React.useState(null);
-  
+
   //send user data to parent object using props function
-  const login = (user) => {
-    if(user.username.length === 0 || user.password === 0){
-      setMessage("Enter all required fields")
-    }else if(props.validUsers[user.username] === user.password){
-      props.login(user)
-      props.history.push('/');
-    }else if(props.validUsers[user.username] === user.username && props.validUsers[user.username] !== user.password){
-      setMessage("Password incorrect")
-    }
-    else{
-      setMessage("User doesn't exist")
-    }
+  const signup = () => {
+    props.history.push('/login');
   }
 
   /* istanbul ignore next */
@@ -39,15 +30,20 @@ export default function UserLogin(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const user1 = {
-      username:data.get('username'),
-      password:data.get('password')
+    if(data.get("confirmpassword").length === 0 || data.get("password").length === 0 || data.get("username").length === 0){
+      setMessage("Complete all required fields");
+    }else if(data.get("confirmpassword") !== data.get("password")){
+      setMessage("Passwords dont match!");
     }
-    login(user1)
+    else{
+      console.log("Success")
+      props.validUsers[data.get("username")] = data.get("password")
+      signup()
+    }
   };
 
   return (
-    <div data-testid="UserLogin">
+    <div data-testid="UserSignup">
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -63,11 +59,11 @@ export default function UserLogin(props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign up
           </Typography>
-          <div style={{color: "red"}}>
+            <div style={{color: "red"}}>
                 { message }
-          </div>
+            </div>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -84,7 +80,17 @@ export default function UserLogin(props) {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Set Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="confirmpassword"
+              label="Confirm Password"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -95,12 +101,12 @@ export default function UserLogin(props) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign up
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="/login"  variant="body2">
+                  {"Have an account? Log In"}
                 </Link>
               </Grid>
             </Grid>
