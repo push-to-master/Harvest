@@ -8,41 +8,44 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const PieChart = (props) => {
     //PROCESSING LOGS TO GET UNIQUE TYPES AND RESPECTIVE AGGREGATION
-    const [categoryFilter,setCategoryFilter] = React.useState(null);
-    const [typeFilter,setTypeFilter] = React.useState(null);
-    const [rawData,setRawData] = React.useState(props.logsData);
-    async function applyPieFilters (filters){
+    const [categoryFilter, setCategoryFilter] = React.useState(null);
+    const [typeFilter, setTypeFilter] = React.useState(null);
+    const [rawData, setRawData] = React.useState(props.logsData);
+    async function applyPieFilters(filters) {
         setCategoryFilter(filters.category);
         setTypeFilter(filters.type);
     }
     const prepareGraph = () => {
+        if(rawData.length===0){
+            return []
+        }
         //Strip all element properties except date and yield
         // let newArray = rawData.map(({ _id, description, num_plants, org_id, date, type, user_id, user_name, ...item }) => item);
-        const filterOn = ["category","type","produce"];
+        const filterOn = ["category", "type", "produce"];
         let filterSelect = 0;
         let newArray = rawData
         //get the sum of all yields
-        if (categoryFilter!==null&&typeFilter===null){
-            newArray = filterByCategory(newArray,categoryFilter);
+        if (categoryFilter !== null && typeFilter === null) {
+            newArray = filterByCategory(newArray, categoryFilter);
             filterSelect = 1;
         }
-        else if(typeFilter!==null){
-            newArray = filterByCategory(newArray,categoryFilter);
-            console.log("CAT")
-            console.log(categoryFilter)
-            newArray = filterByType(newArray,typeFilter);
-            console.log("TYPE")
-            console.log(typeFilter)
-            console.log(newArray);
+        else if (typeFilter !== null) {
+            newArray = filterByCategory(newArray, categoryFilter);
+            // console.log("CAT")
+            // console.log(categoryFilter)
+            newArray = filterByType(newArray, typeFilter);
+            // console.log("TYPE")
+            // console.log(typeFilter)
+            // console.log(newArray);
             filterSelect = 2;
         }
         const totalYield = newArray.map(item => item.yield).reduce((prev, next) => prev + next);
         //process yield and produce to get datapoint array
-        
-        
+
+
         newArray = newArray.map(elem => (
             {
-                y: Math.trunc((elem.yield / totalYield) * 100),
+                y: ((elem.yield / totalYield) * 100),
                 label: elem[filterOn[filterSelect]],
                 count: elem.yield
             }
@@ -61,12 +64,22 @@ const PieChart = (props) => {
             }, {})))
         };
         newArray = processData(newArray);
+        newArray = newArray.map(elem =>(
+            {
+                y:Math.round(elem.y*10)/10,
+                label:elem.label
+            }
+        ));
+        console.log(newArray)
         return newArray;
     }
-    
 
-    const [graphData, setGraphData] = React.useState(()=>{
-        return prepareGraph();}
+    React.useEffect(() => {
+        setRawData(props.logsData)
+    }, [props])
+    const [graphData, setGraphData] = React.useState(() => {
+        return prepareGraph();
+    }
     )
 
     //pie chart options
@@ -100,7 +113,7 @@ const PieChart = (props) => {
     }
     return (
         <div>
-            <GraphPieFilters logsData = {props.logsData} applyFilters ={applyPieFilters} />
+            <GraphPieFilters logsData={props.logsData} applyFilters={applyPieFilters} />
             <CanvasJSChart options={options}
             /* onRef={ref => this.chart = ref} */
             />

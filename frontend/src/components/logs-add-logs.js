@@ -150,7 +150,7 @@ const LogsAddLog = props => {
     
     <div>
       {/*START ADD LOG FORM*/}
-    <Accordion sx={{ width: '90%', overflow: 'hidden',  left:'5%', bottom: '1%', background: '#e8f5e9'}} >
+    <Accordion sx={{ width: '90%',  left:'5%', bottom: '1%', background: '#e8f5e9'}} >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
