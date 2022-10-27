@@ -4,7 +4,7 @@ import {filterByDate, filterByFood, filterByType, filterByCategory} from '../fil
 const testLogs = [
     {
         "_id": "63470e9c2bf61c6266e88bcd",
-        "user_name": null,
+        "user_name": "Matt",
         "user_id": "63470e9c2bf61c6266e88bcb",
         "org_id": "63470e9c2bf61c6266e88bcc",
         "produce": "Artichoke",
