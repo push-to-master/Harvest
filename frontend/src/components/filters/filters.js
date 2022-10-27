@@ -1,3 +1,4 @@
+// get date object given a start string
 function getStartDate(start){
     if(start === null){
         return new Date(1900, 0, 1)
@@ -9,6 +10,7 @@ function getStartDate(start){
     return startDate
 }
 
+// get end date from given end string
 function getEndDate(end){
     if(end === null){
         return new Date(3000, 0, 1)
@@ -20,6 +22,7 @@ function getEndDate(end){
     return endDate
 }
 
+// filter by date given a logs array and start and end date string, returns filtered logs by date
 export function filterByDate(logs, start, end){
     let filteredLogs = []
     let startDate = getStartDate(start)
@@ -36,6 +39,7 @@ export function filterByDate(logs, start, end){
     return filteredLogs
 }
 
+// filter by food type given logs array and a produce string, returns filtered logs by food
 export function filterByFood(logs, selectedProduce){
     let filteredLogs = []
 
@@ -50,6 +54,7 @@ export function filterByFood(logs, selectedProduce){
     return filteredLogs
 }
 
+// filter by type given logs array and a type string, returns filtered logs by type
 export function filterByType(logs, selectedType){
     let filteredLogs = []
 
@@ -64,6 +69,7 @@ export function filterByType(logs, selectedType){
     return filteredLogs
 }
 
+// filter by category given logs array and a category string, returns filtered logs by category
 export function filterByCategory(logs,selectedCategory){
     let filteredLogs = []
     
@@ -78,6 +84,7 @@ export function filterByCategory(logs,selectedCategory){
     return filteredLogs
 }
 
+// filter by username given logs array and a username, returns filtered logs by username
 export function filterByUsername(logs,selectedUsername){
     let filteredLogs = []
     
