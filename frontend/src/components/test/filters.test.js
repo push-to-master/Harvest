@@ -1,4 +1,4 @@
-import {filterByDate, filterByFood, filterByType, filterByCategory} from '../filters/filters.js'
+import {filterByDate, filterByFood, filterByType, filterByCategory, filterByUsername} from '../filters/filters.js'
 
 // -------------------------- test data------------------------------------------
 const testLogs = [
