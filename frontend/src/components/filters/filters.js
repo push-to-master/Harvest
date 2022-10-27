@@ -77,3 +77,17 @@ export function filterByCategory(logs,selectedCategory){
 
     return filteredLogs
 }
+
+export function filterByUsername(logs,selectedUsername){
+    let filteredLogs = []
+    
+    for(let i = 0; i < logs.length; i++){
+        let currLog = logs[i]
+        let currUsername = currLog.user_name
+        if(currUsername === selectedUsername){
+            filteredLogs.push(currLog)
+        }
+    }
+
+    return filteredLogs
+}
