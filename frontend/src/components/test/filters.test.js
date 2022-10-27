@@ -16,7 +16,7 @@ const testLogs = [
     },
     {
         "_id": "63470f102bf61c6266e88be2",
-        "user_name": null,
+        "user_name": "Jessie",
         "user_id": "63470f102bf61c6266e88be0",
         "org_id": "63470f102bf61c6266e88be1",
         "produce": "Sage",
@@ -110,6 +110,20 @@ test('filter by start date only', () => {
 test('filter by end date only', () => {
     const filteredLogs = filterByDate(testLogs, null, "2022-10-01");
     expect(filteredLogs[0].date).toBe("2022-01-01T00:00:00.000Z")
+});
+
+//--------------------------------------------------------------------------------------
+
+//----------------------------- test date ----------------------------------------------
+
+test('filter by name', () => {
+    const filteredLogs = filterByUsername(testLogs, "Matt");
+    expect(filteredLogs[0].user_name).toBe("Matt")
+});
+
+test('filter by name', () => {
+    const filteredLogs = filterByUsername(testLogs, "Jessie");
+    expect(filteredLogs[0].user_name).toBe("Jessie")
 });
 
 //--------------------------------------------------------------------------------------
