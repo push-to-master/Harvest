@@ -69,7 +69,8 @@
       "./src/components/graphs-filters.js",
       "./src/components/graphs-pie-filters.js",
       "./src/components/logs-add-logs.js",
-      "./src/components/user-login.js"
+      "./src/components/user-login.js",
+      "./src/components/user-signup.js"
     ]
   }
   
