@@ -10,6 +10,12 @@ import OrgsList from "./components/orgs-list";
 import ShowGraphs from "./components/graphs-list";
 import UserLogin from "./components/user-login";
 
+const validUsers = [
+  {username: "Jessie",password:"Jessie"},
+  {username: "Matt", password:"Matt"},
+  {username:"Xin",password:"Xin"}
+]
+
 function App() {
   const [user, setUser] = React.useState(null);
 
@@ -87,7 +93,7 @@ function App() {
           <Route 
             path="/login"
             render={(props) => (
-              <UserLogin {...props} login={login} />
+              <UserLogin {...props} login={login} validUsers={validUsers}/>
             )}
           />
           <Route 
