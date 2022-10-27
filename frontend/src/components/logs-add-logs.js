@@ -50,7 +50,7 @@ const LogsAddLog = props => {
   //API request to add a log to the database
   const uploadLog =() =>{
     var data = {
-      user_name: currentUser.name,
+      user_name: currentUser.username,
       produce: selectedProduce,
       type: selectedType,
       category: selectedCategory,

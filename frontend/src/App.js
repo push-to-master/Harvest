@@ -27,7 +27,7 @@ function App() {
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="navbar-brand mx-5">
           <Link to={"/"} className="nav-link">
-              Organisations
+              Harvest
           </Link>
         </div>
         <div className="navbar-nav mr-auto">
@@ -52,11 +52,11 @@ function App() {
               Logs
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to={"/organisations"} className="nav-link">
               Organisations
             </Link>
-          </li>
+          </li> */}
         <li className="nav-item">
             <Link to={"/show-graph"} className="nav-link">
               Graphs
@@ -67,7 +67,7 @@ function App() {
       <div className="mt-3 mx-3">
         <Switch>
           <Route 
-            exact path={["/", "/organisations"]} 
+            exact path={["/organisations"]} 
             render={(props) => (
               <OrgsList {...props} user={user} />
             )}
@@ -91,7 +91,7 @@ function App() {
             )}
           />
           <Route 
-            path="/logs"
+            exact path={["/", "/logs"]} 
             render={(props) => (
               <LogsAddLog {...props} user={user} />
             )}
