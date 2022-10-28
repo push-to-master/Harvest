@@ -35,7 +35,7 @@ export default class LogsDAO {
       return { error: e }
     }
   }
-
+  // gets logs
   static async getLogs({
     filters = null,
     page = 0,

@@ -30,7 +30,7 @@ export default class LogsController {
       res.status(500).json({ error: e.message })
     }
   }
-
+  // api for getting logs. 
   static async apiGetLogs(req, res, next) {
     const logsPerPage = req.query.logsPerPage ? parseInt(req.query.logsPerPage, 10) : 20
     const page = req.query.page ? parseInt(req.query.page, 10) : 0

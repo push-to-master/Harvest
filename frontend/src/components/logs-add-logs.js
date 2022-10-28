@@ -147,7 +147,7 @@ const LogsAddLog = props => {
   };
   console.log("Add Log:",currentUser);
   return (
-    
+  
     <div>
       {/*START ADD LOG FORM*/}
     <Accordion sx={{ width: '90%',  left:'5%', bottom: '1%', background: '#e8f5e9'}} >
